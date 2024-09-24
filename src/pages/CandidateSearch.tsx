@@ -16,28 +16,25 @@ const CandidateSearch = () => {
     bio: '',
   });
 
-  const fetchInitialCandidates = async () => {
+  useEffect(() => {
+    fetchCandidateList();
+  }, []);
+
+  useEffect(() => {
+    if (candidates.length > 0) {
+      fetchCandidateDetails(currentIndex);
+    }
+  }, [candidates, currentIndex]);
+
+  const fetchCandidateList = async () => {
     const data = await searchGithub();
     const usernames = data.map((user: { login: string }) => user.login);
     setCandidates(usernames);
   };
 
-  useEffect(() => {
-    fetchInitialCandidates();
-  }, []);
-
-  useEffect(() => {
-    if (candidates.length > 0) {
-      console.log(currentIndex)
-      fetchCandidateDetails(currentIndex);
-    }
-  }, [candidates, currentIndex]);
-
   const fetchCandidateDetails = async (index: number) => {
     const username = candidates[index];
     const userDetail: Candidate = await searchGithubUser(username);
-    console.log(userDetail);
-    console.log(userDetail.name);
     if (Object.keys(userDetail).length === 0 || !userDetail.login) {
       nextCandidate();
       return;
@@ -50,7 +47,7 @@ const CandidateSearch = () => {
       setCurrentIndex(currentIndex + 1);
     } else {
       setCurrentIndex(0);
-      fetchInitialCandidates();
+      fetchCandidateList();
     }
   };
 
@@ -68,9 +65,9 @@ const CandidateSearch = () => {
     <div>
       <h1>Candidate Search</h1>
       <CandidateCard currentCandidate={currentCandidate}></CandidateCard>
-      <div>
-        <button onClick={nextCandidate}>-</button>
-        <button onClick={() => {
+      <div className='candidate-buttons'>
+        <button className="negative-button" onClick={nextCandidate}>-</button>
+        <button className="positive-button" onClick={() => {
           addToPotentialCandidatesList();
           nextCandidate();
         }}>+</button>

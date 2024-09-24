@@ -18,17 +18,16 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
 
 body {
-  background: linear-gradient(
-    180deg,
-    rgb(32, 44, 136) 0%,
-    rgba(9, 9, 121, 1) 15%,
-    rgba(0, 2, 18, 1) 100%
-  );
+  background: linear-gradient(180deg,
+      rgb(32, 44, 136) 0%,
+      rgba(9, 9, 121, 1) 15%,
+      rgba(0, 2, 18, 1) 100%);
   background-size: cover;
   background-repeat: no-repeat no-repeat;
   background-position: center center;
@@ -44,22 +43,32 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 20px;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.negative-button {
+  background-color: darkred;
+}
+
+.positive-button {
+  background-color: green;
 }
 
 @media (prefers-color-scheme: light) {
@@ -67,9 +76,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
@@ -117,4 +128,40 @@ tbody tr:nth-child(odd) {
 .table {
   width: 80vw;
   table-layout: fixed;
+  word-wrap: break-word;
+}
+
+td {
+  padding: 15px;
+}
+
+td img {
+  display: block;
+  margin: auto;
+  width: 100px;
+  border-radius: 50%;
+}
+
+
+.candidate-card {
+  background-color: black;
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 50px auto;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.candidate-card img {
+  width: 100%;
+  border-bottom: 2px solid black;
+  border-radius: 15px 15px 0 0;
+}
+
+.candidate-buttons {
+  margin: 0 auto;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
 }
