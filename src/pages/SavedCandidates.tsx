@@ -21,7 +21,9 @@ const SavedCandidates = () => {
   return (
     <div>
       <h1>Potential Candidates</h1>
-      <CandidateTable candidateList={candidates} removeCandidate={removeCandidate}></CandidateTable>
+      {candidates.length > 0
+        ? (<CandidateTable candidateList={candidates} removeCandidate={removeCandidate}></CandidateTable>)
+        : (<h2>No Potential Candidates Yet</h2>)}
     </div>
   );
 
