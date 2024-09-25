@@ -147,6 +147,12 @@ td img {
   border-radius: 50%;
 }
 
+td button {
+  display: block;
+  margin: auto;
+}
+
+
 
 .candidate-card {
   background-color: black;

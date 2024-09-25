@@ -40,7 +40,7 @@ const CandidateTable = ({ candidateList, removeCandidate }: TableProps) => {
                             <td>{candidate.company || 'N/A'}</td>
                             <td>{candidate.bio || 'N/A'}</td>
                             <td>
-                                <button className="negative-button" onClick={() => removeCandidate(index)}></button>
+                                <button className="negative-button" onClick={() => removeCandidate(index)}>-</button>
                             </td>
                         </tr>
                     ))}
